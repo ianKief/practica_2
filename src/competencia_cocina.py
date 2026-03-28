@@ -80,9 +80,11 @@ def competencia():
         puntaje_max_ronda = -1
         print(f" Ronda {i + 1}: {ronda['theme']}")
         for participante, scores in ronda['scores'].items():
+            # Para cada participante, me quedo con cada puntaje de cada juez y los sumo
             puntaje_ronda = sum(scores.values())
             print(f"  {participante}: {puntaje_ronda} puntos")
             if participante not in participantes:
+                # Si el participante no esta en el diccionario, lo agrego con sus valores iniciales
                 participantes[participante] = {'puntaje_total': 0, 'rondas_ganadas': 0, 'mejor_ronda': 0, 'promedio': 0}
             participantes[participante]['puntaje_total'] += puntaje_ronda
             if puntaje_ronda > puntaje_max_ronda:
@@ -95,6 +97,7 @@ def competencia():
             print(f"  Ganador: {ganador_ronda} ({puntaje_max_ronda} pts)")
             participantes[ganador_ronda]['rondas_ganadas'] += 1
         print()
+    # Ordeno la tabla de posiciones por puntaje total, de mayor a menor
     tabla_ordenada = sorted(participantes.items(), key=lambda x: (-x[1]['puntaje_total']))
     print("Tabla de posiciones final:")
     print(f"{'Participante':<15} {'Puntaje':<10} {'Rondas ganadas':<15} {'Mejor ronda':<15} {'Promedio':<10}")
