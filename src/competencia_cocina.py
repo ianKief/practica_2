@@ -101,5 +101,3 @@ def competencia():
     for participante, datos in tabla_ordenada:
         datos['promedio'] = datos['puntaje_total'] / len(rounds)
         print(f"{participante:<15} {datos['puntaje_total']:<10} {datos['rondas_ganadas']:<15} {datos['mejor_ronda']:<15} {datos['promedio']:<10.1f}")
-
-competencia()
